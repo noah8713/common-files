@@ -75,8 +75,8 @@ export TIMEZONE
 export TARGET_OUT="${TARGET_OUT:-$(pwd)/out/${TARGET_OS}_${TARGET_ARCH}}"
 export TARGET_OUT_LINUX="${TARGET_OUT_LINUX:-$(pwd)/out/linux_amd64}"
 
-export CONTAINER_TARGET_OUT="${CONTAINER_TARGET_OUT:-/work/out/${TARGET_OS}_${TARGET_ARCH}}"
-export CONTAINER_TARGET_OUT_LINUX="${CONTAINER_TARGET_OUT_LINUX:-/work/out/linux_amd64}"
+export CONTAINER_TARGET_OUT="${CONTAINER_TARGET_OUT:-/tmp/work/out/${TARGET_OS}_${TARGET_ARCH}}"
+export CONTAINER_TARGET_OUT_LINUX="${CONTAINER_TARGET_OUT_LINUX:-/tmp/work/out/linux_amd64}"
 
 export IMG="${IMG:-gcr.io/istio-testing/${IMAGE_NAME}:${IMAGE_VERSION}}"
 

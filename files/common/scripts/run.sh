@@ -32,7 +32,7 @@ source "${WD}/setup_env.sh"
 # Override variables with container specific
 export TARGET_OUT=${CONTAINER_TARGET_OUT}
 export TARGET_OUT_LINUX=${CONTAINER_TARGET_OUT_LINUX}
-export REPO_ROOT=/work
+export REPO_ROOT=/tmp/work
 
 # $CONTAINER_OPTIONS becomes an empty arg when quoted, so SC2086 is disabled for the
 # following command only
@@ -47,9 +47,9 @@ export REPO_ROOT=/work
     --env-file <(env | grep -v ${ENV_BLOCKLIST}) \
     -e IN_BUILD_CONTAINER=1 \
     -e TZ="${TIMEZONE:-$TZ}" \
-    --mount "type=bind,source=${PWD},destination=/work,consistency=cached" \
+    --mount "type=bind,source=${PWD},destination=/tmp/work,consistency=cached" \
     --mount "type=volume,source=go,destination=/go,consistency=cached" \
     --mount "type=volume,source=gocache,destination=/gocache,consistency=cached" \
     --mount "type=volume,source=cache,destination=/home/.cache,consistency=cached" \
     ${CONDITIONAL_HOST_MOUNTS} \
-    -w /work "${IMG}" "$@"
+    -w /tmp/work "${IMG}" "$@"
